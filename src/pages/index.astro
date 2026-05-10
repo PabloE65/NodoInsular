@@ -1,17 +1,254 @@
 ---
+import '../styles/global.css';
 
+const servicios = [
+  {
+    icon: '🛒',
+    title: 'Punto de Venta & Inventario',
+    desc: 'Sistemas de POS, control de stock e inventario adaptados al flujo real de tu negocio.',
+  },
+  {
+    icon: '🌐',
+    title: 'Tiendas & E-commerce',
+    desc: 'Vende en línea con una plataforma a tu medida, sin pagar comisiones a terceros.',
+  },
+  {
+    icon: '⚙️',
+    title: 'Automatización de Procesos',
+    desc: 'Digitalizamos y automatizamos tareas repetitivas para que tu equipo se enfoque en lo que importa.',
+  },
+  {
+    icon: '🤖',
+    title: 'Integraciones con IA',
+    desc: 'Agentes de chat inteligentes y asistentes que aprenden de tu negocio y atienden a tus clientes.',
+  },
+  {
+    icon: '📊',
+    title: 'Apps Web a Medida',
+    desc: 'Desarrollamos aplicaciones web personalizadas según las necesidades específicas de tu empresa.',
+  },
+  {
+    icon: '🔗',
+    title: 'Integración de Sistemas',
+    desc: 'Conectamos tus herramientas existentes para que trabajen juntas sin fricciones.',
+  },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content="Nodo Insular — Desarrollo de software a medida para pequeños negocios en el sur de Chile. Automatización, IA, e-commerce y más." />
+    <title>Nodo Insular — Software a Medida para tu Negocio</title>
+  </head>
+  <body class="bg-gray-950 text-white font-sans">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full bg-gray-950/80 backdrop-blur border-b border-gray-800 z-50">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <span class="text-xl font-bold tracking-tight">Nodo Insular</span>
+        <ul class="hidden md:flex gap-8 text-sm text-gray-400">
+          <li><a href="#servicios" class="hover:text-white transition-colors">Servicios</a></li>
+          <li><a href="#trabajos" class="hover:text-white transition-colors">Trabajos</a></li>
+          <li><a href="#nosotros" class="hover:text-white transition-colors">Nosotros</a></li>
+          <li><a href="#pricing" class="hover:text-white transition-colors">Precios</a></li>
+          <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
+          <li><a href="#contacto" class="bg-indigo-600 hover:bg-indigo-500 transition-colors px-4 py-1.5 rounded-lg text-white">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20">
+      <p class="text-sm text-indigo-400 uppercase tracking-widest mb-4">Sur de Chile · Software a Medida</p>
+      <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-6">
+        Moderniza tu negocio.<br/>
+        <span class="text-indigo-400">Sin complicaciones.</span>
+      </h1>
+      <p class="text-gray-400 text-lg max-w-2xl mb-10">
+        Creamos aplicaciones web, sistemas de gestión e integraciones con inteligencia artificial
+        diseñadas para las necesidades reales de pequeños negocios en el sur de Chile.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="#contacto" class="bg-indigo-600 hover:bg-indigo-500 transition-colors px-8 py-3 rounded-lg font-medium">
+          Conversemos
+        </a>
+        <a href="#servicios" class="border border-gray-700 hover:border-gray-500 transition-colors px-8 py-3 rounded-lg font-medium text-gray-300">
+          Ver servicios
+        </a>
+      </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-24 px-6 bg-gray-900">
+      <div class="max-w-6xl mx-auto">
+        <p class="text-indigo-400 text-sm uppercase tracking-widest text-center mb-3">Servicios</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">¿En qué te podemos ayudar?</h2>
+        <p class="text-gray-400 text-center max-w-2xl mx-auto mb-14">
+          Nos especializamos en soluciones digitales que automatizan y modernizan los flujos de trabajo de tu empresa.
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {servicios.map(s => (
+            <div class="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-indigo-700 transition-colors">
+              <div class="text-3xl mb-4">{s.icon}</div>
+              <h3 class="text-lg font-semibold mb-2">{s.title}</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">{s.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Trabajos -->
+    <section id="trabajos" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col items-center mb-14">
+          <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full px-4 py-1 mb-4 uppercase tracking-wider">Próximamente</span>
+          <p class="text-indigo-400 text-sm uppercase tracking-widest mb-3">Portafolio</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Trabajos realizados</h2>
+          <p class="text-gray-400 text-center max-w-xl">
+            Aquí iremos publicando los proyectos que construimos junto a nuestros clientes.
+            Estamos en nuestros primeros pasos — ¡sé parte de los primeros!
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 opacity-40 pointer-events-none select-none">
+          {[1, 2, 3].map(() => (
+            <div class="bg-gray-900 border border-gray-800 rounded-xl overflow-hidden">
+              <div class="h-40 bg-gray-800"></div>
+              <div class="p-6">
+                <div class="h-3 bg-gray-700 rounded w-1/3 mb-3"></div>
+                <div class="h-4 bg-gray-700 rounded w-3/4 mb-2"></div>
+                <div class="h-3 bg-gray-800 rounded w-full"></div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Nosotros -->
+    <section id="nosotros" class="py-24 px-6 bg-gray-900">
+      <div class="max-w-4xl mx-auto">
+        <p class="text-indigo-400 text-sm uppercase tracking-widest text-center mb-3">Nosotros</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Software del sur, para el sur</h2>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <div>
+            <p class="text-gray-300 text-lg leading-relaxed mb-4">
+              Nodo Insular nació con la convicción de que los pequeños negocios del sur de Chile merecen
+              herramientas digitales tan buenas como las de cualquier gran empresa.
+            </p>
+            <p class="text-gray-400 leading-relaxed">
+              Desarrollamos aplicaciones web a medida: sistemas de punto de venta, inventarios, e-commerce y
+              flujos automatizados con inteligencia artificial. Trabajamos de cerca con cada cliente para
+              entender su negocio y entregar una solución que realmente funcione en su día a día.
+            </p>
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            {[
+              { num: '100%', label: 'Soluciones personalizadas' },
+              { num: 'Sur', label: 'de Chile, con presencia local' },
+              { num: 'IA', label: 'integrada cuando agrega valor' },
+              { num: '24/7', label: 'Soporte para lo que construimos' },
+            ].map(i => (
+              <div class="bg-gray-800 border border-gray-700 rounded-xl p-5 text-center">
+                <div class="text-2xl font-bold text-indigo-400 mb-1">{i.num}</div>
+                <div class="text-gray-400 text-sm">{i.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-24 px-6 bg-gray-900">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col items-center mb-14">
+          <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full px-4 py-1 mb-4 uppercase tracking-wider">Próximamente</span>
+          <p class="text-indigo-400 text-sm uppercase tracking-widest mb-3">Precios</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Planes y servicios</h2>
+          <p class="text-gray-400 text-center max-w-xl">
+            Estamos definiendo nuestros planes. Mientras tanto, <a href="#contacto" class="text-indigo-400 hover:underline">escríbenos</a> y te cotizamos a medida.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-4 gap-6 opacity-40 pointer-events-none select-none">
+          {[1, 2, 3, 4].map(() => (
+            <div class="bg-gray-800 border border-gray-700 rounded-xl p-6 flex flex-col gap-4">
+              <div class="h-4 bg-gray-700 rounded w-2/3"></div>
+              <div class="h-3 bg-gray-700 rounded w-full"></div>
+              <div class="h-3 bg-gray-700 rounded w-4/5"></div>
+              <div class="h-8 bg-gray-700 rounded w-1/2 mt-2"></div>
+              <div class="h-3 bg-gray-600 rounded w-1/3"></div>
+              <div class="flex flex-col gap-2 mt-2">
+                {[1, 2, 3, 4].map(() => (
+                  <div class="h-3 bg-gray-700 rounded w-full"></div>
+                ))}
+              </div>
+              <div class="h-10 bg-gray-700 rounded mt-auto"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col items-center mb-14">
+          <span class="text-xs bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full px-4 py-1 mb-4 uppercase tracking-wider">Próximamente</span>
+          <p class="text-indigo-400 text-sm uppercase tracking-widest mb-3">Blog</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Noticias & Recursos</h2>
+          <p class="text-gray-400 text-center max-w-xl">
+            Pronto publicaremos artículos sobre tecnología, automatización y negocios digitales para el sur de Chile.
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 opacity-40 pointer-events-none select-none">
+          {[1, 2, 3].map(() => (
+            <div class="bg-gray-900 border border-gray-800 rounded-xl p-6">
+              <div class="h-3 bg-gray-700 rounded w-1/4 mb-4"></div>
+              <div class="h-4 bg-gray-700 rounded w-full mb-2"></div>
+              <div class="h-4 bg-gray-700 rounded w-4/5 mb-6"></div>
+              <div class="h-3 bg-gray-800 rounded w-1/4"></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 px-6 bg-gray-900">
+      <div class="max-w-xl mx-auto text-center">
+        <p class="text-indigo-400 text-sm uppercase tracking-widest mb-3">Contacto</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Tienes un proyecto en mente?</h2>
+        <p class="text-gray-400 mb-10">
+          Cuéntanos qué necesita tu negocio y encontramos la mejor solución juntos.
+        </p>
+        <a
+          href="mailto:hola@nodoinsular.cl"
+          class="inline-block bg-indigo-600 hover:bg-indigo-500 transition-colors px-8 py-3 rounded-lg font-medium mb-6"
+        >
+          hola@nodoinsular.cl
+        </a>
+        <p class="text-gray-600 text-sm">También puedes escribirnos por WhatsApp o redes sociales.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-gray-800">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-gray-600 text-sm">
+        <span>© 2026 Nodo Insular · nodoinsular.cl</span>
+        <div class="flex gap-6">
+          <a href="#servicios" class="hover:text-gray-400 transition-colors">Servicios</a>
+          <a href="#trabajos" class="hover:text-gray-400 transition-colors">Trabajos</a>
+          <a href="#blog" class="hover:text-gray-400 transition-colors">Blog</a>
+          <a href="#contacto" class="hover:text-gray-400 transition-colors">Contacto</a>
+        </div>
+      </div>
+    </footer>
+
+  </body>
 </html>
