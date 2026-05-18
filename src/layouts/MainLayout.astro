@@ -26,5 +26,12 @@ const {
   </head>
   <body class="bg-cornsilk-50 text-black-forest-950" style="font-family: var(--font-inter), sans-serif;">
     <slot />
+    {import.meta.env.PROD && (
+      <div id="coming-soon" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-olive-leaf-950/95 backdrop-blur-sm">
+        <p class="text-olive-leaf-400 text-sm uppercase tracking-widest mb-4">Nodo Digital</p>
+        <h1 class="text-5xl md:text-7xl font-bold text-cornsilk-50 mb-4">Próximamente</h1>
+        <p class="text-cornsilk-200 text-lg max-w-sm text-center">Estamos terminando los últimos detalles. Volvemos pronto.</p>
+      </div>
+    )}
   </body>
 </html>
