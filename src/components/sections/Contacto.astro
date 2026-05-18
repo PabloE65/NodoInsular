@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import palafito from '../../images/palafito_hero.webp';
+---
+
+<section id="contacto" class="relative py-24 px-6 overflow-hidden">
+  <Image
+    src={palafito}
+    alt=""
+    class="absolute inset-0 w-full h-full object-cover"
+    widths={[800, 1200, 1920]}
+    sizes="100vw"
+  />
+  <div class="absolute inset-0 bg-cornsilk-50/85"></div>
+  <div class="relative z-10 max-w-xl mx-auto text-center">
+    <p class="text-olive-leaf-600 text-sm uppercase tracking-widest mb-3">Contacto</p>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Conversamos?</h2>
+    <p class="text-olive-leaf-700 mb-10">
+      Potenciemos tu negocio desde el sur con tecnología robusta. Cuéntanos qué necesitas y hacemos equipo para crecer.
+    </p>
+    <a
+      href="mailto:hola@nodoinsular.cl"
+      class="inline-block bg-black-forest-700 hover:bg-black-forest-600 transition-colors px-8 py-3 rounded-lg font-medium text-white mb-6"
+    >
+      hola@nodoinsular.cl
+    </a>
+    <p class="text-olive-leaf-500 text-sm">También puedes escribirnos por WhatsApp o redes sociales.</p>
+  </div>
+</section>

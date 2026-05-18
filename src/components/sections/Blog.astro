@@ -1,0 +1,87 @@
+---
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<section id="blog" class="py-24 px-6 bg-cornsilk-100">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col items-center mb-14">
+      <p class="text-olive-leaf-600 text-sm uppercase tracking-widest mb-3">Blog</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Decisiones Digitales para Empresas</h2>
+      <p class="text-olive-leaf-700 text-center max-w-xl">
+        Creemos que un cliente informado toma decisiones más eficientes y productivas para su negocio. Por eso, compartimos periódicamente información relevante, consejos prácticos y explicaciones sencillas sobre el <span class="text-copperwood-700 font-medium">mundo digital</span> y la tecnología aplicada a <span class="text-copperwood-700 font-medium">emprendimientos</span>.
+      </p>
+    </div>
+
+    <div class="relative">
+      <div
+        id="blog-carousel"
+        class="flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {posts.map(post => (
+          <div class="snap-start shrink-0 w-full md:w-[calc((100%_-_2rem)_/_3)] bg-olive-leaf-800 text-cornsilk-50 rounded-2xl p-8 flex flex-col gap-4">
+            <p class="text-olive-leaf-400 text-xs uppercase tracking-widest">
+              {post.data.pubDate.toLocaleDateString('es-CL', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+            <h3 class="text-xl font-semibold leading-snug">{post.data.title}</h3>
+            <p class="text-cornsilk-200 text-sm leading-relaxed flex-1">{post.data.description}</p>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="flex flex-wrap gap-2 mt-auto">
+                {post.data.tags.map((tag: string) => (
+                  <span class="text-xs bg-olive-leaf-700 text-olive-leaf-200 px-2 py-1 rounded-full">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div class="flex justify-center gap-3 mt-6">
+        <button
+          id="blog-prev"
+          class="w-10 h-10 rounded-full bg-olive-leaf-800 text-cornsilk-50 flex items-center justify-center hover:bg-olive-leaf-700 transition-colors disabled:opacity-30 disabled:cursor-default"
+          aria-label="Entrada anterior"
+        >&#8592;</button>
+        <button
+          id="blog-next"
+          class="w-10 h-10 rounded-full bg-olive-leaf-800 text-cornsilk-50 flex items-center justify-center hover:bg-olive-leaf-700 transition-colors disabled:opacity-30 disabled:cursor-default"
+          aria-label="Siguiente entrada"
+        >&#8594;</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const carousel = document.getElementById('blog-carousel') as HTMLDivElement | null;
+  const prevBtn = document.getElementById('blog-prev') as HTMLButtonElement | null;
+  const nextBtn = document.getElementById('blog-next') as HTMLButtonElement | null;
+
+  if (carousel && prevBtn && nextBtn) {
+    const cardWidth = (): number => {
+      const card = carousel.querySelector<HTMLElement>(':scope > div');
+      if (!card) return 0;
+      const gap = parseFloat(getComputedStyle(carousel).gap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    };
+
+    prevBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: -cardWidth(), behavior: 'smooth' });
+    });
+
+    nextBtn.addEventListener('click', () => {
+      carousel.scrollBy({ left: cardWidth(), behavior: 'smooth' });
+    });
+
+    const updateButtons = () => {
+      prevBtn.disabled = carousel.scrollLeft <= 1;
+      nextBtn.disabled = carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 1;
+    };
+
+    carousel.addEventListener('scroll', updateButtons, { passive: true });
+    updateButtons();
+  }
+</script>

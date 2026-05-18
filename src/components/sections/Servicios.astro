@@ -1,0 +1,38 @@
+---
+const servicios = [
+  {
+    title: 'E-commerce & Punto de Venta',
+    desc: 'Creamos tiendas online robustas, rápidas y seguras para comercializar tus productos. Tener <span class="text-cornsilk-50 font-semibold">presencia digital</span> es un pilar crítico para tu <span class="text-cornsilk-50 font-semibold">emprendimiento</span> en los tiempos que vivimos.',
+  },
+  {
+    title: 'WebApps a Medida',
+    desc: 'Si tu flujo de trabajo requiere un sistema único, construimos aplicaciones web a medida asesorándote codo a codo en cada decisión técnica.',
+  },
+  {
+    title: 'Asesorías Tecnológicas',
+    desc: '¿Te abruma el <span class="text-cornsilk-50 font-semibold">ecosistema digital</span> o te "da lata" lidiar con la terminología informática? Te ayudamos a descifrarlo. Analizamos la situación actual de tu negocio y te presentamos <span class="text-cornsilk-50 font-semibold">soluciones sencillas y realistas</span>.',
+  },
+  {
+    title: 'Servicios Recurrentes',
+    desc: 'Tu página debe estar <span class="text-cornsilk-50 font-semibold">viva para no perder presencia digital</span>: contenido fresco y optimizado, mantención y potenciación del SEO, actualizaciones de seguridad y mantención periódica. Nosotros te ayudamos con eso.',
+  },
+];
+---
+
+<section id="servicios" class="py-24 px-6 bg-cornsilk-100">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-olive-leaf-600 text-sm uppercase tracking-widest text-center mb-3">Servicios</p>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Nuestra propuesta de valor</h2>
+    <p class="text-olive-leaf-700 text-center max-w-2xl mx-auto mb-14">
+      El desarrollo de una aplicación es solo el primer paso. No te dejamos solo después del lanzamiento. Ofrecemos un servicio con soporte continuo y mantención técnica de forma cercana. Al estar basados en el sur, empatizamos con la realidad económica y de conectividad local de la zona, asegurando un servicio cercano.
+    </p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {servicios.map(s => (
+        <div class="bg-olive-leaf-800 text-cornsilk-50 rounded-2xl p-8 flex flex-col gap-4 hover:bg-olive-leaf-700 transition-colors">
+          <p class="text-olive-leaf-400 text-xs uppercase tracking-widest">{s.title}</p>
+          <p class="text-cornsilk-200 text-sm leading-relaxed" set:html={s.desc} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

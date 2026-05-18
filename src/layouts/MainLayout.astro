@@ -1,0 +1,30 @@
+---
+import { Font } from "astro:assets";
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Nodo Insular — Software a Medida para tu Negocio',
+  description = 'Nodo Insular — Desarrollo de software a medida para pequeños negocios en el sur de Chile. Automatización, IA, e-commerce y más.',
+} = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <Font cssVariable="--font-inter" preload />
+  </head>
+  <body class="bg-cornsilk-50 text-black-forest-950" style="font-family: var(--font-inter), sans-serif;">
+    <slot />
+  </body>
+</html>
