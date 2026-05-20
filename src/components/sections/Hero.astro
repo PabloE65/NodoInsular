@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import bosqueHero from '../../images/bosque_hero.webp';
 ---
 
-<section class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
+<section id="hero-section" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-20 overflow-hidden">
   <Image
     src={bosqueHero}
     alt=""
@@ -11,7 +11,7 @@ import bosqueHero from '../../images/bosque_hero.webp';
     widths={[800, 1200, 1920]}
     sizes="100vw"
   />
-  <div class="absolute inset-0 bg-cornsilk-50/85"></div>
+  <div id="hero-overlay" class="absolute inset-0 bg-cornsilk-50/85"></div>
 
   <div class="relative z-10 flex flex-col items-center">
     <p class="text-sm text-olive-leaf-700 uppercase tracking-widest mb-4 font-semibold">Sur de Chile · Partner Tecnológico Local</p>
@@ -32,3 +32,23 @@ import bosqueHero from '../../images/bosque_hero.webp';
     </div>
   </div>
 </section>
+
+<script>
+  const section = document.getElementById('hero-section')!;
+  const overlay = document.getElementById('hero-overlay')!;
+  const RADIUS = 220;
+
+  section.addEventListener('mousemove', (e) => {
+    const rect = section.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const mask = `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px, transparent 0%, black 100%)`;
+    overlay.style.maskImage = mask;
+    (overlay.style as any).webkitMaskImage = mask;
+  });
+
+  section.addEventListener('mouseleave', () => {
+    overlay.style.maskImage = '';
+    (overlay.style as any).webkitMaskImage = '';
+  });
+</script>

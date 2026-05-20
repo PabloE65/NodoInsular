@@ -11,7 +11,7 @@ import palafito from '../../images/palafito_hero.webp';
     widths={[800, 1200, 1920]}
     sizes="100vw"
   />
-  <div class="absolute inset-0 bg-cornsilk-50/85"></div>
+  <div id="contacto-overlay" class="absolute inset-0 bg-cornsilk-50/85"></div>
   <div class="relative z-10 max-w-xl mx-auto text-center">
     <p class="text-olive-leaf-600 text-sm uppercase tracking-widest mb-3">Contacto</p>
     <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Conversamos?</h2>
@@ -27,3 +27,23 @@ import palafito from '../../images/palafito_hero.webp';
     <p class="text-olive-leaf-500 text-sm">También puedes escribirnos por WhatsApp o redes sociales.</p>
   </div>
 </section>
+
+<script>
+  const contactoSection = document.getElementById('contacto')!;
+  const contactoOverlay = document.getElementById('contacto-overlay')!;
+  const RADIUS = 220;
+
+  contactoSection.addEventListener('mousemove', (e) => {
+    const rect = contactoSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const mask = `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px, transparent 0%, black 100%)`;
+    contactoOverlay.style.maskImage = mask;
+    (contactoOverlay.style as any).webkitMaskImage = mask;
+  });
+
+  contactoSection.addEventListener('mouseleave', () => {
+    contactoOverlay.style.maskImage = '';
+    (contactoOverlay.style as any).webkitMaskImage = '';
+  });
+</script>

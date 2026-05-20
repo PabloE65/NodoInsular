@@ -11,7 +11,7 @@ import playaHero from '../../images/playa_hero.webp';
     widths={[800, 1200, 1920]}
     sizes="100vw"
   />
-  <div class="absolute inset-0 bg-cornsilk-50/85"></div>
+  <div id="trabajos-overlay" class="absolute inset-0 bg-cornsilk-50/85"></div>
   <div class="relative z-10 max-w-6xl mx-auto">
     <div class="flex flex-col items-center mb-14">
       <span class="text-xs bg-sunlit-clay-500/10 text-sunlit-clay-700 border border-sunlit-clay-400/30 rounded-full px-4 py-1 mb-4 uppercase tracking-wider">Próximamente</span>
@@ -36,3 +36,23 @@ import playaHero from '../../images/playa_hero.webp';
     </div>
   </div>
 </section>
+
+<script>
+  const trabajosSection = document.getElementById('trabajos')!;
+  const trabajosOverlay = document.getElementById('trabajos-overlay')!;
+  const RADIUS = 220;
+
+  trabajosSection.addEventListener('mousemove', (e) => {
+    const rect = trabajosSection.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const mask = `radial-gradient(circle ${RADIUS}px at ${x}px ${y}px, transparent 0%, black 100%)`;
+    trabajosOverlay.style.maskImage = mask;
+    (trabajosOverlay.style as any).webkitMaskImage = mask;
+  });
+
+  trabajosSection.addEventListener('mouseleave', () => {
+    trabajosOverlay.style.maskImage = '';
+    (trabajosOverlay.style as any).webkitMaskImage = '';
+  });
+</script>
