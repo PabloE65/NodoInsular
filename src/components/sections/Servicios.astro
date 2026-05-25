@@ -19,20 +19,24 @@ const servicios = [
 ];
 ---
 
-<section id="servicios" class="py-24 px-6 bg-cornsilk-100">
-  <div class="max-w-6xl mx-auto">
-    <p class="text-olive-leaf-600 text-sm uppercase tracking-widest text-center mb-3">Servicios</p>
-    <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Nuestra propuesta de valor</h2>
+<section id="servicios" class="relative py-24 px-6 overflow-hidden">
+  <div id="servicios-overlay" class="absolute inset-0 bg-cornsilk-50/70"></div>
+  <div class="relative z-10 max-w-6xl mx-auto">
+    <div class="flex flex-col items-center mb-8">
+      <span class="text-xs bg-olive-leaf-500/30 text-olive-leaf-800 border border-olive-leaf-500/50 rounded-full px-4 py-1 mb-4 uppercase tracking-wider font-semibold">Servicios</span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-1 text-center italic relative hover:text-olive-leaf-800 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-olive-leaf-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">Nuestra propuesta de valor</h2>
+    </div>
     <p class="text-olive-leaf-700 text-center max-w-2xl mx-auto mb-14">
-      El desarrollo de una aplicación es solo el primer paso. No te dejamos solo después del lanzamiento. Ofrecemos un servicio con soporte continuo y mantención técnica de forma cercana. Al estar basados en el sur, empatizamos con la realidad económica y de conectividad local, asegurando un servicio cercano.
+      La entrega es solo el primer paso. No te dejamos solo después del lanzamiento. Ofrecemos servicios de soporte continuo, mantención y gestión de contenido.
     </p>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
       {servicios.map(s => (
         <div class="bg-olive-leaf-800 text-cornsilk-50 rounded-2xl p-8 flex flex-col gap-4 hover:bg-olive-leaf-700 transition-colors">
-          <p class="text-olive-leaf-300 text-xs uppercase tracking-widest font-bold">{s.title}</p>
-          <p class="text-cornsilk-50 text-sm leading-relaxed" set:html={s.desc} />
+          <p class="text-olive-leaf-400 text-xs uppercase tracking-widest font-bold">{s.title}</p>
+          <p class="text-cornsilk-50 text-sm leading-relaxed text-justify" set:html={s.desc} />
         </div>
       ))}
     </div>
   </div>
 </section>
+

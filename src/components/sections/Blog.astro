@@ -6,11 +6,11 @@ const posts = (await getCollection('blog')).sort(
 );
 ---
 
-<section id="blog" class="py-24 px-6 bg-cornsilk-100">
+<section id="blog" class="py-24 px-6" style="background: linear-gradient(to bottom, rgb(254, 251, 230), rgb(253, 247, 206));">
   <div class="max-w-6xl mx-auto">
     <div class="flex flex-col items-center mb-14">
-      <p class="text-olive-leaf-600 text-sm uppercase tracking-widest mb-3">Blog</p>
-      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Decisiones Digitales para Empresas</h2>
+      <span class="text-xs bg-olive-leaf-500/30 text-olive-leaf-800 border border-olive-leaf-500/50 rounded-full px-4 py-1 mb-4 uppercase tracking-wider font-semibold">Blog</span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center italic relative hover:text-olive-leaf-800 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-olive-leaf-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">Decisiones Digitales para Empresas</h2>
       <p class="text-olive-leaf-700 text-center max-w-xl">
         Creemos que un cliente informado toma decisiones más eficientes y productivas para su negocio. Por eso, compartimos periódicamente información relevante, consejos prácticos y explicaciones sencillas sobre el <span class="text-copperwood-700 font-medium">mundo digital</span> y la tecnología aplicada a <span class="text-copperwood-700 font-medium">emprendimientos</span>.
       </p>

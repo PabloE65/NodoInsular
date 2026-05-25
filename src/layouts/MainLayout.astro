@@ -26,6 +26,24 @@ const {
   </head>
   <body class="bg-cornsilk-50 text-black-forest-950" style="font-family: var(--font-inter), sans-serif;">
     <slot />
+
+    <script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('section > div:not([class*="inset"])')
+        .forEach(el => {
+          el.classList.add('fade-in');
+          observer.observe(el);
+        });
+    </script>
+
     {import.meta.env.PROD && (
       <div id="coming-soon" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-olive-leaf-950/95 backdrop-blur-sm">
         <p class="text-olive-leaf-400 text-sm uppercase tracking-widest mb-4">Nodo Insular</p>
