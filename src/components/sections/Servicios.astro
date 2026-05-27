@@ -1,20 +1,24 @@
 ---
 const servicios = [
   {
-    title: 'E-commerce & Punto de Venta',
-    desc: 'Creamos tiendas online <span class="text-cornsilk-200 font-semibold">robustas, rápidas y seguras</span> para comercializar tus productos.',
+    title: 'Tu tienda online lista para vender',
+    header: 'E-commerce & Punto de Venta',
+    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> E commerce robusto, rápido y seguro</li><li><span class="text-cornsilk-200">✓</span> Shopify, Woocommerce</li><li><span class="text-cornsilk-200">✓</span> Tienda a medida</li></ul>',
   },
   {
-    title: 'WebApps a Medida',
-    desc: 'Si tu flujo de trabajo requiere un sistema único, construimos aplicaciones web a medida, asesorándote codo a codo en cada decisión técnica.',
+    title: 'Tu presencia digital, bien construida',
+    header: 'WebApps a Medida',
+    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> Sitios Corporativos/Institucionales</li><li><span class="text-cornsilk-200">✓</span> Landing Pages</li><li><span class="text-cornsilk-200">✓</span> Portafolios</li><li><span class="text-cornsilk-200">✓</span> Sitios Personalizados</li></ul>',
   },
   {
-    title: 'Asesorías Tecnológicas',
-    desc: '¿Te abruma el ecosistema digital? Analizamos tu situación actual y te asesoramos dejando claros los pasos a seguir  .',
+    title: 'Toma mejores decisiones tecnológicas',
+    header: 'Asesorías Tecnológicas',
+    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> IA aplicada a tu negocio</li><li><span class="text-cornsilk-200">✓</span> Comparativa de herramientas y plataformas</li><li><span class="text-cornsilk-200">✓</span> Orientación clara, sin tecnicismos</li></ul>',
   },
   {
-    title: 'Servicios Recurrentes',
-    desc: 'Tu página debe estar activa para mantener <span class="text-cornsilk-200 font-semibold">presencia digital</span>. Mantencion periódica, SEO, gestión de contenido, seguridad.',
+    title: 'Tu sitio siempre activo y mejorando',
+    header: 'Servicios Recurrentes',
+    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> Mantenimiento técnico y seguridad</li><li><span class="text-cornsilk-200">✓</span> SEO y gestión de contenido</li><li><span class="text-cornsilk-200">✓</span> Campañas publicitarias (Ads)</li></ul>',
   },
 ];
 ---
@@ -23,7 +27,7 @@ const servicios = [
   <div id="servicios-overlay" class="absolute inset-0 bg-cornsilk-50/70"></div>
   <div class="relative z-10 max-w-6xl mx-auto">
     <div class="flex flex-col items-center mb-8">
-      <span class="text-xs bg-olive-leaf-500/30 text-olive-leaf-800 border border-olive-leaf-500/50 rounded-full px-4 py-1 mb-4 uppercase tracking-wider font-semibold">Servicios</span>
+      <span class="text-base bg-olive-leaf-500/30 text-olive-leaf-800 border border-olive-leaf-500/50 rounded-full px-4 py-1 mb-4 uppercase tracking-wider font-semibold">Servicios</span>
       <h2 class="text-3xl md:text-4xl font-bold mb-1 text-center italic relative hover:text-olive-leaf-800 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-olive-leaf-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">Nuestra propuesta de valor</h2>
     </div>
     <p class="text-olive-leaf-700 text-center max-w-2xl mx-auto mb-14">
@@ -31,9 +35,20 @@ const servicios = [
     </p>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
       {servicios.map(s => (
-        <div class="bg-olive-leaf-800 text-cornsilk-50 rounded-2xl p-8 flex flex-col gap-4 hover:bg-olive-leaf-700 transition-colors">
-          <p class="text-olive-leaf-400 text-xs uppercase tracking-widest font-bold">{s.title}</p>
-          <p class="text-cornsilk-50 text-sm leading-relaxed text-justify" set:html={s.desc} />
+        <div class="bg-olive-leaf-800 text-cornsilk-50 rounded-2xl p-8 flex flex-col gap-4 hover:bg-olive-leaf-700 transition-colors h-full">
+          <div class="flex flex-col gap-2 pb-2 text-center">
+            <p class="text-olive-leaf-300 text-base uppercase tracking-widest font-semibold">{s.header}</p>
+            <p class="text-sm italic text-cornsilk-200 leading-tight">{s.title}</p>
+          </div>
+          <div class="flex-grow">
+            <p class="text-cornsilk-50 text-base" set:html={s.desc} />
+          </div>
+          <button class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-black-forest-900 px-6 font-medium text-neutral-200 self-center mt-2">
+            <span>Mas información</span>
+            <div class="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-1 group-hover:opacity-100">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </div>
+          </button>
         </div>
       ))}
     </div>
