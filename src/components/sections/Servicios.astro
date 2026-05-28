@@ -1,57 +1,98 @@
 ---
+import shopIcon from '../../images/redes/shop.svg';
+import webIcon from '../../images/redes/web.svg';
+import asesoriaIcon from '../../images/redes/asesoria.svg';
+import subsIcon from '../../images/redes/subs.svg';
+
 const servicios = [
   {
-    title: 'Tu tienda online lista para vender',
-    header: 'E-commerce & Punto de Venta',
-    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> E commerce robusto, rápido y seguro</li><li><span class="text-cornsilk-200">✓</span> Shopify, Woocommerce</li><li><span class="text-cornsilk-200">✓</span> Tienda a medida</li></ul>',
+    title: 'E-commerce & Punto de Venta',
+    desc: 'E-commerce robusto, rápido y seguro. Shopify, WooCommerce y tiendas a medida para que vendas sin límites.',
+    icon: shopIcon,
   },
   {
-    title: 'Tu presencia digital, bien construida',
-    header: 'WebApps a Medida',
-    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> Sitios Corporativos/Institucionales</li><li><span class="text-cornsilk-200">✓</span> Landing Pages</li><li><span class="text-cornsilk-200">✓</span> Portafolios</li><li><span class="text-cornsilk-200">✓</span> Sitios Personalizados</li></ul>',
+    title: 'WebApps a Medida',
+    desc: 'Sitios corporativos, landing pages, portafolios y soluciones personalizadas. Tu presencia digital, bien construida.',
+    icon: webIcon,
   },
   {
-    title: 'Toma mejores decisiones tecnológicas',
-    header: 'Asesorías Tecnológicas',
-    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> IA aplicada a tu negocio</li><li><span class="text-cornsilk-200">✓</span> Comparativa de herramientas y plataformas</li><li><span class="text-cornsilk-200">✓</span> Orientación clara, sin tecnicismos</li></ul>',
+    title: 'Asesorías Tecnológicas',
+    desc: 'IA aplicada a tu negocio, comparativa de herramientas y orientación clara. Toma mejores decisiones.',
+    icon: asesoriaIcon,
   },
   {
-    title: 'Tu sitio siempre activo y mejorando',
-    header: 'Servicios Recurrentes',
-    desc: '<ul class="list-none space-y-2"><li><span class="text-cornsilk-200">✓</span> Mantenimiento técnico y seguridad</li><li><span class="text-cornsilk-200">✓</span> SEO y gestión de contenido</li><li><span class="text-cornsilk-200">✓</span> Campañas publicitarias (Ads)</li></ul>',
+    title: 'Servicios Recurrentes',
+    desc: 'Mantenimiento técnico, seguridad, SEO, gestión de contenido y campañas publicitarias. Tu sitio siempre activo.',
+    icon: subsIcon,
   },
 ];
+
+const techs = [
+  { name: "Shopify",      bg: "#96BF48", color: "#fff", label: "SH" },
+  { name: "WooCommerce",  bg: "#7F54B3", color: "#fff", label: "WC" },
+  { name: "Mercado Pago", bg: "#00AEEF", color: "#fff", label: "MP" },
+  { name: "Webpay",       bg: "#E4151B", color: "#fff", label: "WP" },
+  { name: "Flow",         bg: "#1E3A5F", color: "#fff", label: "FL" },
+  { name: "Bsale",        bg: "#F47B20", color: "#fff", label: "BS" },
+];
+const doubled = [...techs, ...techs];
 ---
 
 <section id="servicios" class="relative py-24 px-6 overflow-hidden">
   <div id="servicios-overlay" class="absolute inset-0 bg-cornsilk-50/70"></div>
   <div class="relative z-10 max-w-6xl mx-auto">
     <div class="flex flex-col items-center mb-8">
-      <span class="text-base bg-olive-leaf-500/30 text-olive-leaf-800 border border-olive-leaf-500/50 rounded-full px-4 py-1 mb-4 uppercase tracking-wider font-semibold">Servicios</span>
-      <h2 class="text-3xl md:text-4xl font-bold mb-1 text-center italic relative hover:text-olive-leaf-800 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-olive-leaf-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">Nuestra propuesta de valor</h2>
+      <span class="text-sm bg-olive-leaf-500/30 text-olive-leaf-800 border border-olive-leaf-500/50 rounded-full px-4 py-1 mb-4 uppercase tracking-wider font-semibold">Servicios</span>
+      <h2 class="text-3xl md:text-4xl font-bold mb-1 text-center italic relative hover:text-olive-leaf-800 transition-colors after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-full after:bg-olive-leaf-400 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">Todo lo que necesitas para tu proyecto</h2>
     </div>
-    <p class="text-olive-leaf-700 text-center max-w-2xl mx-auto mb-14">
-      La entrega es solo el primer paso. No te dejamos solo después del lanzamiento. Ofrecemos servicios de soporte continuo, mantención y gestión de contenido.
+    <p class="text-olive-leaf-950 text-center max-w-2xl mx-auto mb-14">
+      Ofrecemos distintas soluciones para potenciar tu presencia digital. Desde tiendas online hasta asesorías tecnológicas. Nuestro objetivo es convertirnos en tu socio técnico y que te enfoques en lo que mejor haces, tu negocio. 
     </p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {servicios.map(s => (
-        <div class="bg-olive-leaf-800 text-cornsilk-50 rounded-2xl p-8 flex flex-col gap-4 hover:bg-olive-leaf-700 transition-colors h-full">
-          <div class="flex flex-col gap-2 pb-2 text-center">
-            <p class="text-olive-leaf-300 text-base uppercase tracking-widest font-semibold">{s.header}</p>
-            <p class="text-sm italic text-cornsilk-200 leading-tight">{s.title}</p>
-          </div>
-          <div class="flex-grow">
-            <p class="text-cornsilk-50 text-base" set:html={s.desc} />
-          </div>
-          <button class="group relative inline-flex h-12 items-center justify-center overflow-hidden rounded-md bg-black-forest-900 px-6 font-medium text-neutral-200 self-center mt-2">
-            <span>Mas información</span>
-            <div class="w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-5 group-hover:translate-x-0 group-hover:pl-1 group-hover:opacity-100">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5"><path d="M8.14645 3.14645C8.34171 2.95118 8.65829 2.95118 8.85355 3.14645L12.8536 7.14645C13.0488 7.34171 13.0488 7.65829 12.8536 7.85355L8.85355 11.8536C8.65829 12.0488 8.34171 12.0488 8.14645 11.8536C7.95118 11.6583 7.95118 11.3417 8.14645 11.1464L11.2929 8H2.5C2.22386 8 2 7.77614 2 7.5C2 7.22386 2.22386 7 2.5 7H11.2929L8.14645 3.85355C7.95118 3.65829 7.95118 3.34171 8.14645 3.14645Z" fill="currentColor" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+        <div class="relative pl-16">
+          <dt class="text-base font-semibold text-olive-leaf-950">
+            <div class="service-icon-button absolute top-0 left-0 flex size-12 items-center justify-center rounded-lg bg-black-forest-700 hover:bg-black-forest-600 transition-colors p-2">
+              <img
+                src={s.icon.src}
+                alt={s.title}
+                class="w-full h-full"
+              />
             </div>
-          </button>
+            {s.title}
+          </dt>
+          <dd class="mt-2 text-base text-olive-leaf-950">{s.desc}</dd>
         </div>
       ))}
     </div>
   </div>
+
+  <div class="py-3 rounded-xl max-w-4xl mx-auto mt-16" style="background:#fefbe6">
+  <div class="relative overflow-hidden">
+
+    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10"
+         style="background:linear-gradient(to right,#fefbe6,transparent)"></div>
+    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10"
+         style="background:linear-gradient(to left,#fefbe6,transparent)"></div>
+
+    <div class="flex items-center w-max animate-scroll-left hover:[animation-play-state:paused]">
+      {doubled.map((t) => (
+        <div class="flex items-center gap-2 px-9">
+          <div
+            class="w-7 h-7 rounded-[7px] flex items-center justify-center
+                   text-[10px] font-extrabold font-mono shrink-0"
+            style={`background:${t.bg};color:${t.color}`}
+          >
+            {t.label}
+          </div>
+          <span class="text-[13px] font-semibold text-gray-900 whitespace-nowrap">
+            {t.name}
+          </span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</div>
 </section>
 
