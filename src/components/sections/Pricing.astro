@@ -2,15 +2,51 @@
 import {
   ArrowUpRight,
   Building2,
-  ClipboardList,
-  Headset,
-  Image,
-  MapPin,
-  MessageCircle,
-  Palette,
   ShoppingCart,
-  Smartphone,
 } from '@lucide/astro';
+import PricingCard from '../ui/PricingCard.astro';
+import ServicePlaceholderCard from '../ui/ServicePlaceholderCard.astro';
+
+const landingPlans = [
+  {
+    name: 'Básica',
+    price: '$ 150.000 + IVA',
+    theme: 'basic' as const,
+    features: [
+      'Diseño responsive',
+      'Diseño personalizado',
+      'Integración WhatsApp',
+      'Formulario de contacto',
+      'Google Maps',
+      'Optimización de imágenes',
+      'Soporte técnico',
+    ],
+  },
+  {
+    name: 'Pro',
+    price: 'Consultar',
+    theme: 'pro' as const,
+    features: [
+      'Todo lo incluido en Básica',
+      'Estructura ampliada para más secciones',
+      'Configuración SEO inicial',
+      'Integración de analítica web',
+      'Acompañamiento durante el lanzamiento',
+    ],
+  },
+  {
+    name: 'Premium',
+    price: 'Consultar',
+    theme: 'premium' as const,
+    features: [
+      'Todo lo incluido en Pro',
+      'Diseño y contenido con foco en conversión',
+      'Animaciones e interacciones personalizadas',
+      'Integraciones adicionales según el proyecto',
+      'Soporte prioritario para el lanzamiento',
+    ],
+  },
+];
 ---
 
 <section id="pricing" class="relative overflow-hidden px-4 py-16 md:px-6 md:py-24">
@@ -23,97 +59,17 @@ import {
     </header>
 
     <div class="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <article class="flex flex-col rounded-2xl border-2 border-cornsilk-500 bg-gradient-to-b from-black-forest-800 to-black-forest-700 p-6 shadow-lg shadow-black-forest-900/10 transition-shadow hover:shadow-xl md:p-8">
-        <div class="mb-6 flex items-center gap-3">
-          <span aria-hidden="true" class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-black-forest-600 text-cornsilk-200">
-            <ArrowUpRight size={20} strokeWidth={1.75} />
-          </span>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-cornsilk-300">Páginas web</p>
-            <h3 class="text-lg font-bold text-cornsilk-50">Landing Básica</h3>
-          </div>
-        </div>
+      <PricingCard id="landing-pricing" category="Landing Pages" title="Para Convertir" plans={landingPlans}>
+        <ArrowUpRight slot="icon" size={20} strokeWidth={1.75} />
+      </PricingCard>
 
-        <div class="mb-6 rounded-xl bg-black-forest-900/40 p-4">
-          <p class="text-sm text-cornsilk-200">Inversión</p>
-          <p class="mt-1 text-3xl font-bold tracking-tight text-cornsilk-50">$ 150.000</p>
-        </div>
+      <ServicePlaceholderCard category="Sitios web" title="Sitio Corporativo">
+        <Building2 slot="icon" size={20} strokeWidth={1.75} />
+      </ServicePlaceholderCard>
 
-        <ul class="mb-8 space-y-3 text-sm text-cornsilk-100">
-          <li class="flex items-start gap-3">
-            <Smartphone size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Diseño responsive</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Palette size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Diseño personalizado</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <MessageCircle size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Integración WhatsApp</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <ClipboardList size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Formulario de contacto</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <MapPin size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Google Maps</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Image size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Optimización de imágenes</span>
-          </li>
-          <li class="flex items-start gap-3">
-            <Headset size={16} strokeWidth={1.75} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
-            <span>Soporte técnico</span>
-          </li>
-        </ul>
-
-        <a
-          href="#contacto"
-          class="mt-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-cornsilk-100 px-5 py-3 font-semibold text-black-forest-900 transition-colors hover:bg-cornsilk-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cornsilk-100"
-        >
-          <MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />
-          Contactar por WhatsApp
-        </a>
-      </article>
-
-      <article class="flex flex-col rounded-2xl border border-olive-leaf-200 bg-cornsilk-50/80 p-6 shadow-lg shadow-black-forest-900/5 md:p-8">
-        <div class="mb-6 flex items-center gap-3">
-          <span aria-hidden="true" class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-olive-leaf-100 text-black-forest-700">
-            <Building2 size={20} strokeWidth={1.75} />
-          </span>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-olive-leaf-700">Sitios web</p>
-            <h3 class="text-lg font-bold text-black-forest-900">Sitio Corporativo</h3>
-          </div>
-        </div>
-        <div class="flex flex-1 flex-col items-center justify-center rounded-xl border border-dashed border-olive-leaf-300 bg-olive-leaf-50/70 p-6 text-center">
-          <p class="text-sm font-semibold text-olive-leaf-800">Próximamente</p>
-          <p class="mt-2 max-w-xs text-sm leading-relaxed text-olive-leaf-700">
-            Estamos preparando los detalles de este servicio.
-          </p>
-        </div>
-      </article>
-
-      <article class="flex flex-col rounded-2xl border border-olive-leaf-200 bg-cornsilk-50/80 p-6 shadow-lg shadow-black-forest-900/5 md:p-8">
-        <div class="mb-6 flex items-center gap-3">
-          <span aria-hidden="true" class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-olive-leaf-100 text-black-forest-700">
-            <ShoppingCart size={20} strokeWidth={1.75} />
-          </span>
-          <div>
-            <p class="text-xs font-semibold uppercase tracking-wider text-olive-leaf-700">Tiendas online</p>
-            <h3 class="text-lg font-bold text-black-forest-900">E-commerce</h3>
-          </div>
-        </div>
-        <div class="flex flex-1 flex-col items-center justify-center rounded-xl border border-dashed border-olive-leaf-300 bg-olive-leaf-50/70 p-6 text-center">
-          <p class="text-sm font-semibold text-olive-leaf-800">Próximamente</p>
-          <p class="mt-2 max-w-xs text-sm leading-relaxed text-olive-leaf-700">
-            Estamos preparando los detalles de este servicio.
-          </p>
-        </div>
-      </article>
+      <ServicePlaceholderCard category="Tiendas online" title="E-commerce">
+        <ShoppingCart slot="icon" size={20} strokeWidth={1.75} />
+      </ServicePlaceholderCard>
     </div>
   </div>
 </section>

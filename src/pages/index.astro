@@ -1,13 +1,11 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
-import Navbar from '../components/layouts/Navbar.astro';
 import Hero from '../components/sections/Hero.astro';
 import Servicios from '../components/sections/Servicios.astro';
 import Trabajos from '../components/sections/Trabajos.astro';
 import Nosotros from '../components/sections/Nosotros.astro';
 import Pricing from '../components/sections/Pricing.astro';
 import Contacto from '../components/sections/Contacto.astro';
-import Footer from '../components/layouts/Footer.astro';
 import { getImage } from 'astro:assets';
 import landingRaw from '../images/index_bg.webp';
 
@@ -15,7 +13,6 @@ const landing = await getImage({ src: landingRaw, format: 'webp', width: 1920 })
 ---
 
 <MainLayout>
-  <Navbar />
   <Hero />
   <div class="landing-wrapper" style={`background-image: url(${landing.src})`}>
     <Servicios />
@@ -24,7 +21,6 @@ const landing = await getImage({ src: landingRaw, format: 'webp', width: 1920 })
   </div>
   <Trabajos />
   <Contacto />
-  <Footer />
 </MainLayout>
 
 <style>
@@ -34,5 +30,4 @@ const landing = await getImage({ src: landingRaw, format: 'webp', width: 1920 })
   background-repeat: no-repeat;
 }
 </style>
-
 

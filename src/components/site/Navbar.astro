@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../../images/logo/nodoinsular-05.webp';
+---
+
+<nav class="fixed top-0 w-full bg-cornsilk-50/90 backdrop-blur border-b-2 border-cornsilk-300 z-50">
+  <div class="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between">
+    <a href="/" class="flex items-center hover:opacity-80 transition-opacity">
+      <Image src={logo} alt="Nodo Insular" class="w-48" style="height: auto;" />
+    </a>
+    <ul class="hidden md:flex gap-8 text-sm text-olive-leaf-700">
+      <li><a href="/#servicios" class="relative hover:text-black-forest-900 transition-colors after:content-[''] after:absolute after:bottom-0 pb-1 after:left-0 after:h-1 after:w-full after:bg-cornsilk-200 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 font-medium">Servicios</a></li>
+      <li><a href="/#trabajos" class="relative hover:text-black-forest-900 transition-colors after:content-[''] after:absolute after:bottom-0 pb-1 after:left-0 after:h-1 after:w-full after:bg-cornsilk-200 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 font-medium">Trabajos</a></li>
+      <li><a href="/#nosotros" class="relative hover:text-black-forest-900 transition-colors after:content-[''] after:absolute after:bottom-0 pb-1 after:left-0 after:h-1 after:w-full after:bg-cornsilk-200 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 font-medium">Nosotros</a></li>
+      <li><a href="/#pricing" class="relative hover:text-black-forest-900 transition-colors after:content-[''] after:absolute after:bottom-0 pb-1 after:left-0 after:h-1 after:w-full after:bg-cornsilk-200 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 font-medium">Precios</a></li>
+      <li><a href="/blog/" class="relative hover:text-black-forest-900 transition-colors after:content-[''] after:absolute after:bottom-0 pb-1 after:left-0 after:h-1 after:w-full after:bg-cornsilk-200 after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 font-medium">Blog</a></li>
+      <li>
+        <a href="/#contacto" class="relative bg-black-forest-700 hover:bg-black-forest-600 transition-colors px-4 py-1.5 rounded-lg text-white">
+          <span class="absolute -top-1 -right-1 flex size-3">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cornsilk-500 opacity-75"></span>
+            <span class="relative inline-flex size-3 rounded-full bg-cornsilk-500"></span>
+          </span>
+          Contacto
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

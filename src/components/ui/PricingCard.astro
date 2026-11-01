@@ -1,0 +1,292 @@
+---
+import { Check, MessageCircle } from '@lucide/astro';
+
+interface Plan {
+  name: string;
+  price: string;
+  theme: 'basic' | 'pro' | 'premium';
+  features: string[];
+}
+
+interface Props {
+  id: string;
+  category: string;
+  title: string;
+  plans: Plan[];
+}
+
+const { id, category, title, plans } = Astro.props;
+---
+
+<article
+  data-pricing-card
+  data-pricing-switcher
+  data-active-theme={plans[0]?.theme ?? 'basic'}
+  class="relative isolate flex flex-col overflow-hidden rounded-2xl border-2 border-cornsilk-500 bg-black-forest-800 p-6 text-cornsilk-50 shadow-lg shadow-black-forest-900/10 transition-[background-color,border-color,box-shadow] duration-500 md:p-8"
+>
+  <div class="mb-6 flex items-center gap-3">
+    <span data-pricing-icon aria-hidden="true" class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-cornsilk-200/15 text-cornsilk-200">
+      <slot name="icon" />
+    </span>
+    <div>
+      <p data-pricing-muted class="text-xs font-semibold uppercase tracking-wider text-cornsilk-300">{category}</p>
+      <p data-pricing-muted class="text-sm text-cornsilk-200">{title}</p>
+    </div>
+  </div>
+
+  <div data-pricing-tablist role="tablist" aria-label={`${title}: planes disponibles`} class="mb-5 grid grid-cols-3 gap-1 rounded-xl bg-black-forest-950/45 p-1">
+    {plans.map((plan, index) => (
+      <button
+        id={`${id}-tab-${index}`}
+        type="button"
+        role="tab"
+        aria-selected={index === 0 ? 'true' : 'false'}
+        aria-controls={`${id}-panel-${index}`}
+        tabindex={index === 0 ? 0 : -1}
+        data-pricing-tab
+        data-pricing-theme={plan.theme}
+        class="rounded-lg px-2 py-2.5 text-xs font-semibold text-cornsilk-200 transition-colors hover:bg-cornsilk-50/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cornsilk-100 aria-selected:bg-cornsilk-100 aria-selected:text-black-forest-900 sm:text-sm"
+      >
+        {plan.name}
+      </button>
+    ))}
+  </div>
+
+  {plans.map((plan, index) => (
+    <div
+      id={`${id}-panel-${index}`}
+      role="tabpanel"
+      aria-labelledby={`${id}-tab-${index}`}
+      tabindex="0"
+      hidden={index !== 0}
+      data-pricing-panel
+      class="flex-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cornsilk-100"
+    >
+      <div data-pricing-pricebox class="my-5 rounded-xl bg-black-forest-950/35 p-4">
+        <p data-pricing-muted class="text-sm text-cornsilk-200">Inversión</p>
+        <p class="mt-1 text-3xl font-bold tracking-tight">{plan.price}</p>
+      </div>
+
+      <ul data-pricing-features class="mb-8 space-y-3 text-sm text-cornsilk-100">
+        {plan.features.map((feature) => (
+          <li class="flex items-start gap-3">
+            <Check data-pricing-check size={16} strokeWidth={2} aria-hidden="true" class="mt-0.5 shrink-0 text-cornsilk-300" />
+            <span>{feature}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+
+  <a
+    data-pricing-cta
+    href="#contacto"
+    class="mt-auto inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-cornsilk-100 px-5 py-3 font-semibold text-black-forest-900 transition-colors hover:bg-cornsilk-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cornsilk-100"
+  >
+    <MessageCircle size={18} strokeWidth={1.75} aria-hidden="true" />
+    Contactar por WhatsApp
+  </a>
+</article>
+
+<style>
+  [data-pricing-card][data-active-theme='basic'] {
+    background-color: var(--color-cornsilk-100);
+    border-color: var(--color-cornsilk-400);
+    color: var(--color-black-forest-950);
+    box-shadow: 0 18px 45px rgb(26 35 16 / 16%), 0 0 28px rgb(249 223 57 / 18%);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] {
+    background-color: var(--color-olive-leaf-800);
+    border-color: var(--color-olive-leaf-300);
+    color: var(--color-cornsilk-50);
+    box-shadow: 0 18px 45px rgb(26 35 16 / 24%), 0 0 32px rgb(192 203 154 / 20%);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] {
+    background-color: var(--color-black-forest-950);
+    border-color: var(--color-cornsilk-400);
+    color: var(--color-cornsilk-200);
+    box-shadow: 0 18px 45px rgb(18 25 11 / 30%), 0 0 34px rgb(249 223 57 / 20%);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-muted] {
+    color: var(--color-black-forest-700);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-muted] {
+    color: var(--color-cornsilk-200);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-muted] {
+    color: var(--color-cornsilk-300);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-icon] {
+    background-color: var(--color-cornsilk-200);
+    color: var(--color-black-forest-900);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-icon] {
+    background-color: var(--color-olive-leaf-700);
+    color: var(--color-cornsilk-100);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-icon] {
+    background-color: var(--color-black-forest-900);
+    color: var(--color-cornsilk-300);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-tablist] {
+    background-color: var(--color-cornsilk-200);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-tablist] {
+    background-color: var(--color-olive-leaf-900);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-tablist] {
+    background-color: var(--color-black-forest-900);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-tab] {
+    color: var(--color-black-forest-800);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-tab] {
+    color: var(--color-cornsilk-100);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-tab] {
+    color: var(--color-cornsilk-200);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-tab][aria-selected='true'] {
+    background-color: var(--color-black-forest-900);
+    color: var(--color-cornsilk-50);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-tab][aria-selected='true'] {
+    background-color: var(--color-olive-leaf-200);
+    color: var(--color-black-forest-950);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-tab][aria-selected='true'] {
+    background-color: var(--color-cornsilk-300);
+    color: var(--color-black-forest-950);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-pricebox] {
+    background-color: var(--color-cornsilk-50);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-pricebox] {
+    background-color: var(--color-olive-leaf-900);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-pricebox] {
+    background-color: var(--color-black-forest-900);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-features] {
+    color: var(--color-black-forest-900);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-features] {
+    color: var(--color-cornsilk-50);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-features] {
+    color: var(--color-cornsilk-100);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-check] {
+    color: var(--color-olive-leaf-700);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-check] {
+    color: var(--color-olive-leaf-200);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-check] {
+    color: var(--color-cornsilk-300);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-cta] {
+    background-color: var(--color-black-forest-900);
+    color: var(--color-cornsilk-50);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-cta] {
+    background-color: var(--color-cornsilk-100);
+    color: var(--color-black-forest-900);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-cta] {
+    background-color: var(--color-cornsilk-300);
+    color: var(--color-black-forest-950);
+  }
+
+  [data-pricing-card][data-active-theme='basic'] [data-pricing-cta]:hover {
+    background-color: var(--color-black-forest-800);
+  }
+
+  [data-pricing-card][data-active-theme='pro'] [data-pricing-cta]:hover {
+    background-color: var(--color-cornsilk-200);
+  }
+
+  [data-pricing-card][data-active-theme='premium'] [data-pricing-cta]:hover {
+    background-color: var(--color-cornsilk-200);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-pricing-card] {
+      transition-duration: 0.01ms;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-pricing-switcher]').forEach((switcher) => {
+    const tabs = Array.from(switcher.querySelectorAll<HTMLButtonElement>('[data-pricing-tab]'));
+    const panels = Array.from(switcher.querySelectorAll<HTMLElement>('[data-pricing-panel]'));
+
+    const activateTab = (index: number, moveFocus = false) => {
+      tabs.forEach((tab, tabIndex) => {
+        const isSelected = tabIndex === index;
+        tab.setAttribute('aria-selected', String(isSelected));
+        tab.tabIndex = isSelected ? 0 : -1;
+
+        const panel = panels[tabIndex];
+        if (panel) panel.hidden = !isSelected;
+      });
+
+      const selectedTheme = tabs[index]?.dataset.pricingTheme;
+      if (selectedTheme) switcher.dataset.activeTheme = selectedTheme;
+
+      if (moveFocus) tabs[index]?.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(index));
+      tab.addEventListener('keydown', (event) => {
+        let nextIndex: number | undefined;
+
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = tabs.length - 1;
+        }
+
+        if (nextIndex !== undefined) {
+          event.preventDefault();
+          activateTab(nextIndex, true);
+        }
+      });
+    });
+  });
+</script>

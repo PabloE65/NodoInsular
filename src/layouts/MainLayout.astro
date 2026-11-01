@@ -1,5 +1,7 @@
 ---
 import { Font } from "astro:assets";
+import Navbar from '../components/site/Navbar.astro';
+import Footer from '../components/site/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -25,7 +27,9 @@ const {
     <Font cssVariable="--font-inter" preload />
   </head>
   <body class="bg-cornsilk-50 text-black-forest-950" style="font-family: var(--font-inter), sans-serif;">
+    <Navbar />
     <slot />
+    <Footer />
 
     <script>
       const observer = new IntersectionObserver((entries) => {
